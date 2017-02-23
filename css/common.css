@@ -1,0 +1,113 @@
+@charset "utf-8";
+.ui-checkbox,.ui-radio,.ui-switch{display:inline-block;box-sizing:content-box;cursor:pointer;}
+input[type="radio"],input[type="checkbox"]{position:absolute;clip:rect(0,0,0,0);*left:-999px;}
+.ui-checkbox,.ui-radio{width:18px;height:18px;border:1px solid #ddd;background-color:#fff;vertical-align:-.5ex;}
+.ui-checkbox{border-radius:4px;}
+.ui-radio{border-radius:50%;}
+.ui-checkbox:after, .ui-radio:after{content:'';display:block;visibility:hidden;}
+.ui-checkbox:after{width:100%;height:100%;border-radius:4px;background-color:#00a5e0;}
+.ui-radio:after{width:10px;height:10px;margin:4px auto 0;border-radius:50%;background-color:#00a5e0;}
+:checked+.ui-checkbox:after,:checked+.ui-radio:after{visibility:visible;-webkit-animation:bounceIn .2s;animation:bounceIn .2s;}
+
+.ui-switch{width:40px;height:22px;color:#00a5e0;border:2px solid;color:#b5b5b5;background-color:currentColor;border-radius:22px;transition:background .2s;}
+.ui-switch:before{content:'';display:block;width:22px;height:22px;border-radius:50%;background-color:#fff;transition:margin-left .2s;}
+:checked+.ui-switch{color:#00a5e0;}
+:checked+.ui-switch:before{margin-left:18px;}
+@-webkit-keyframes bounceIn {
+	0% { -webkit-transform: scale(0); }
+	75% { -webkit-transform: scale(1.1); }
+	100% { -webkit-transform: scale(1); }
+}
+@keyframes bounceIn {
+	0% { transform: scale(0); }
+	75% { transform: scale(1.1); }
+	100% { transform: scale(1); }
+}
+/*
+<input type="checkbox" id="checkbox" checked>
+<label for="checkbox" class="ui-checkbox"></label>
+
+<input type="radio" id="radio1" checked name="a1">
+<label for="radio1" class="ui-radio"></label>
+
+<input type="radio" id="radio2" name="a1">
+<label for="radio2" class="ui-radio" ></label>
+
+<input type="checkbox" id="switch">
+<label for="switch" class="ui-switch"></label>
+*/
+
+.button,button{display:inline-block;border:0;cursor:pointer;line-height:1;background-color:#eaeff2;padding:5px 11px;border-radius:4px;box-shadow:inset 0 -1px #bbbfc2;color:#4d4e53;text-decoration:none; outline:0;}
+.button.green, button.green, .button.cyan, button.cyan, .button.blur, button.blur, .button.red, button.red, .button.magenta, button.magenta, .button.orange, button.orange{color:#fff;}
+.button.red, button.red{background-color:#ea3b28;box-shadow:inset 0 -1px #BC2110;}
+.button.blur, button.blur{background-color:#0095dd;box-shadow:inset 0 -1px #00539f;color:#fff;}
+.button.green, button.green{background-color:#00FF00;box-shadow:inset 0 -1px #00CD00;}
+.button.cyan, button.cyan{background-color:#00FFFF;box-shadow:inset 0 -1px #00CED1;}
+.button.magenta, button.magenta{background-color:#FF00FF;box-shadow:inset 0 -1px #B03060;}
+.button.orange, button.orange{background-color:#FFA500;box-shadow:inset 0 -1px #CD8500;}
+.button.transparent,button.transparent{box-shadow:none;background-color:transparent;}
+.button.disabled, button.disabled{box-shadow:inset 0 -1px rgba(187,191,194,.5);}
+.disabled,[disabled]{pointer-events:none;cursor:not-allowed;opacity:.5;}
+
+.button:active,button:active{box-shadow:inset 0 2px 0 0 rgba(0,0,0,0.1),inset 0 12px 24px 6px rgba(0,0,0,0.1),inset 0 0 2px 2px rgba(0,0,0,0.1); transform:translateY(1px);}
+
+i.icon{display:inline-block;margin-left:10px;margin-right:0;line-height:1;}
+
+/*tab选项卡切换
+<div class="tab-switch-head">
+	<span class="current"></span><span></span><span></span>
+</div>
+<div class="tab-switch-main">
+	<div class="tab-switch-block"></div>
+	<div class="tab-switch-block"></div>
+	<div class="tab-switch-block"></div>
+</div>
+*/
+.tab-switch-head{height:30px;}
+.tab-switch-head span{display:inline-block;width:50px;height:30px;line-height:30px;text-align:center;cursor:pointer;}
+.tab-switch-head .current{color:#f00;}
+.tab-switch-main{position:relative;width:300px;}
+.tab-switch-block{position:absolute;left:0;top:0;width:100%;opacity:0;z-index:1;visibility:hidden;height:0;overflow:hidden;}
+.tab-switch-block.left{z-index:2;height:auto;-webkit-animation:tab-animation-left .8s ease-out forwards;animation:tab-animation-left .8s ease-out forwards;}
+.tab-switch-block.right{z-index:2;height:auto;-webkit-animation:tab-animation-right .8s ease-out forwards;animation:tab-animation-right .8s ease-out forwards;}
+@keyframes tab-animation-left{
+	0% {transform:translate3d(-30px,0px,0px);}
+    50% {transform:translate3d(0,0,0);}
+    100% {opacity:1;}
+}
+@-webkit-keyframes tab-animation-left{
+	0% {-webkit-transform:translate3d(-30px,0px,0px);}
+    50% {-webkit-transform:translate3d(0,0,0);}
+    100% {opacity:1;}
+}
+@keyframes tab-animation-right{
+	0% {transform:translate3d(30px,0px,0px);}
+    50% {transform:translate3d(0,0,0);}
+    100% {opacity:1;}
+}
+@-webkit-keyframes tab-animation-right{
+	0% {-webkit-transform:translate3d(30px,0px,0px);}
+    50% {-webkit-transform:translate3d(0,0,0);}
+    100% {opacity:1;}
+}
+
+/*
+var head = $(".tab-switch-head span"),
+	main = $(".tab-switch-main > .tab-switch-block"),
+	index = 0,
+	prev = 0;
+head.on('click', function(){
+	index = head.index(this);
+	head.removeClass('current').eq(index).addClass('current');
+	main.eq(prev).removeClass('tab-animation-left tab-animation-right');
+	main.eq(index).addClass( index > prev ? "tab-animation-right" : "tab-animation-left");
+	prev = index;
+});
+*/
+
+.lazyLoading{display:inline-block;background:url(../images/onload.gif) no-repeat 50% 50%;}
+.hover-shade{position:relative;overflow:hidden;}
+.hover-shade .span-shade{position:absolute;left:-80%;top:0;width:50%;height:100%;transform:skewX(150deg);background:-moz-linear-gradient(left,rgba(255,255,255,0),rgba(255,255,255,.5),rgba(255,255,255,0));background:-webkit-linear-gradient(left,rgba(255,255,255,0),rgba(255,255,255,.5),rgba(255,255,255,0));background:-o-linear-gradient(left,rgba(255,255,255,0),rgba(255,255,255,.5),rgba(255,255,255,0));background:-ms-linear-gradient(left,rgba(255,255,255,0),rgba(255,255,255,.5),rgba(255,255,255,0));background:linear-gradient(left,rgba(255,255,255,0),rgba(255,255,255,.5),rgba(255,255,255,0));}
+.hover-shade:hover .span-shade{transition:left .8s;left:110%;}    /*注意在鼠标移上去时才添加过渡动画，而不是在之前添加*/
+.img-scale{transition:transform .2s;}
+.img-scale:hover{transform:scale(1.1,1.1);}
