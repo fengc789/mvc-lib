@@ -1,8 +1,9 @@
-utils.js是自己使用的方法库, 里面封装了一些常用的方法: extend, forEach, reduce, on, off, http, promise等, 还有一个MVC.
+本想留一个工具库，后来看了angularjs的一部分源码，有了模仿写一个mvc的打算，然后就有了这个mvc.js。    
+除了angularjs的scope, directive外，里面封装了一些常用的方法: extend, forEach, reduce, on, off, http, promise等。    
 
 on, off事件绑定模仿了jq事件的代理模式;    
 promise大量参照了angularjs源码的$q服务,用法与$q一样;    
-MVC数据绑定使用的是angularjs类似的脏检查机制，指令部分也是参照了angularjs源码的指令服务: compile, preLink, postLink, {{}}等.    
+MVC数据绑定使用的是angularjs类似的watch, dirgest脏检查机制，指令部分也是参照了angularjs源码的指令服务: compile, preLink, postLink, {{}}等.    
 
 
 html:  
@@ -13,7 +14,7 @@ html:
       <p my-dir></p>
       <p><input type="text" ng-text="b">{{b}}</p>    
       <p id="p"></p>
-  </div>
+    </div>
    
 js:  
 
@@ -47,6 +48,7 @@ js:
     }, 2000);
        
 
-
+        
+预览：https://fengc789.github.io/mvc-lib/    
 2017年1月24日    
-2058029557@qq.com
+2058029557@qq.com    
