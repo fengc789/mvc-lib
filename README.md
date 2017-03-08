@@ -8,11 +8,12 @@ MVC数据绑定使用的是angularjs类似的脏检查机制，指令部分也�
 html:  
 
     <div id="div">
-        <p ng-click="add($event,this)">{{ a[0] }} .... {{ b }}</p>    
-        <p ng-show = "c">{{ d(a[1], b) }}</p>
-        <p my-dir></p>
-        <p id="p"></p>
-    </div>
+      <p ng-click="add($event,this)">{{ a[0] }} .... {{ b }}</p>    
+      <p ng-show = "c">{{ d(a[1], b) }}</p>
+      <p my-dir></p>
+      <p><input type="text" ng-text="b">{{b}}</p>    
+      <p id="p"></p>
+  </div>
    
 js:  
 
@@ -45,8 +46,7 @@ js:
       m.$apply();
     }, 2000);
        
-       
-插件里是工作时做的一些东西, 都是原生js写的, 有日历(支持touch左右滑动), 9宫格手势解锁(canvas), 9宫格转盘(animation.js);
+
 
 2017年1月24日    
 2058029557@qq.com
