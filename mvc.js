@@ -2,8 +2,8 @@
  * Created by fengc on 20170124.
  * utils v0.6
  */
-(function (global, factory) {
-    global.$ = factory();
+(function(global, factory){
+	global.$ = factory();
 })(this, function(){
 	'use strict';
 
@@ -269,7 +269,7 @@
 				return previousValue;
 			},
 			pipe = function(queue, initValue){
-				return reduce(queue, function(c, p){ return c + p;}, initValue);
+				return reduce(queue, function(p, c){ return c(p);}, initValue);
 			},
 			unique = function (array) {
 				var result = [], hash = {}, item;
@@ -815,7 +815,7 @@
 			});
 			return result;
 		},
-		extendHttpConfig = function(opt){
+		extendHttpConfig = function(opts){
 			opts = extend({
 				method: 'get',
 				url: '',
@@ -833,9 +833,10 @@
 
 			opts.transformRequest = defaultsHttp.transformRequest.concat(opts.transformRequest);
 			opts.transformResponse = defaultsHttp.transformResponse.concat(opts.transformResponse);
+			return opts;
 		};
 	var http = function (opts) {
-		extendHttpConfig(opts);
+		opts = extendHttpConfig(opts);
 
 		// 转换请求
 		var reqData = transformData(opts.data, opts.headers, undefined, opts.transformRequest);
