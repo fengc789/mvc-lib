@@ -1,3 +1,7 @@
+2017/08/02更新：parse方法改成使用词法分析器，而不是正则表达式。几乎重写了其他东西。
+  
+  
+
 本想留一个工具库，后来看了angularjs的一部分源码，有了模仿写一个mvc的打算，然后就有了这个mvc.js。    
 除了angularjs的scope, directive外，里面封装了一些常用的方法: extend, forEach, reduce, on, off, http, promise等。    
 
