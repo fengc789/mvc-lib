@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-cn" ng-app="myApp">
+<html lang="zh-cn">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -12,11 +12,18 @@
 </head>
 
 <body>
-<div id="div">
-	<p ng-click = "add($event, this)">{{ a[0] }} - {{ b }}</p>
-	<p ng-show = "c">{{ d(a[1], b) }}</p>
+<pre>
+	<p @click = "add($event, this)">{{ a[0] }} - {{ b }}</p>
+	<p :show = "c">{{ d(a[1], b) }}</p>
 	<p my-dir></p>
-	<p><input type="text" ng-text="f">{{f}}</p>
+	<p><input type="text" :text="f">{{f}}</p>
+	<p id="p"></p>
+</pre>
+<div id="div">
+	<p @click = "add($event, this)">{{ a[0] }} - {{ b }}</p>
+	<p :show = "c">{{ d(a[1], b) }}</p>
+	<p my-dir></p>
+	<p><input type="text" :text="f">{{f}}</p>
 	<p id="p"></p>
 </div>
 
